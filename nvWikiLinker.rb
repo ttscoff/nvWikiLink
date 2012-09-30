@@ -20,7 +20,7 @@ available in your Services menu (right click or application menu).
 =end
 #------------------------ CONFIG -----------------------------------------
 # Configure the path to your nvALT notes.
-$notes_path = '~/Dropbox/Notes/'
+$notes_path = '~/Dropbox/nvALT2.2/'
 #---------------------- END CONFIG. That was easy, right? ----------------
 
 require 'cgi'
@@ -93,11 +93,9 @@ class WikiLinker
       txt = "New note" if txt == ''
       note_url = "nvalt://make/?title=#{title}&txt=#{txt}"
       %x{open "#{note_url}"}
-      %x{osascript -e 'tell app "nvALT" to activate'}
     else
       # match found, open note
-      %x{osascript -e 'tell app "nvALT" to open POSIX file "#{topmatch}"'}
-      %x{osascript -e 'tell app "nvALT" to activate' &}
+      system("open", topmatch, "-a", "nvALT")
     end
 
     exit 0

@@ -81,7 +81,7 @@ available in your Services menu (right click or application menu).
 =end
 #------------------------ CONFIG -----------------------------------------
 # Configure the path to your nvALT notes.
-$notes_path = '~/Dropbox/Notes/'
+$notes_path = '~/Dropbox/nvALT2.2/'
 #---------------------- END CONFIG. That was easy, right? ----------------
 
 require 'cgi'
@@ -154,11 +154,9 @@ class WikiLinker
       txt = "New note" if txt == ''
       note_url = "nvalt://make/?title=#{title}&amp;txt=#{txt}"
       %x{open "#{note_url}"}
-      %x{osascript -e 'tell app "nvALT" to activate'}
     else
       # match found, open note
-      %x{osascript -e 'tell app "nvALT" to open POSIX file "#{topmatch}"'}
-      %x{osascript -e 'tell app "nvALT" to activate' &amp;}
+      system("open", topmatch, "-a", "nvALT")
     end
 
     exit 0
@@ -523,7 +521,7 @@ WikiLinker.new.run(input,ARGV.join(' '))
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>545.500000:724.000000</string>
+				<string>545.500000:686.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
