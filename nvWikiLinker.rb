@@ -63,9 +63,9 @@ class WikiLinker
 
     finder = FuzzyFileFinder.new($notes_path)
 
-    # search the notes folder for a filename matching title (score >= 0.2)
+    # search the notes folder for a filename matching title (score >= 0.1)
     res = finder.find(firstmatch.break_camel)
-    # sort matches by score and reject if high score < 0.2
+    # sort matches by score and reject if high score < 0.1
 
     topmatch = nil
     unless res.nil?
@@ -75,7 +75,7 @@ class WikiLinker
 
       valid_matches = []
       res.map {|match|
-        valid_matches.push(match[:path]) if match[:score] >= 0.2
+        valid_matches.push(match[:path]) if match[:score] >= 0.1
       }
       valid_matches.reverse!
 

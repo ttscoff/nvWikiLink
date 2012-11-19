@@ -124,9 +124,9 @@ class WikiLinker
 
     finder = FuzzyFileFinder.new($notes_path)
 
-    # search the notes folder for a filename matching title (score &gt;= 0.2)
+    # search the notes folder for a filename matching title (score &gt;= 0.1)
     res = finder.find(firstmatch.break_camel)
-    # sort matches by score and reject if high score &lt; 0.2
+    # sort matches by score and reject if high score &lt; 0.1
 
     topmatch = nil
     unless res.nil?
@@ -136,7 +136,7 @@ class WikiLinker
 
       valid_matches = []
       res.map {|match|
-        valid_matches.push(match[:path]) if match[:score] &gt;= 0.2
+        valid_matches.push(match[:path]) if match[:score] &gt;= 0.1
       }
       valid_matches.reverse!
 
@@ -521,7 +521,7 @@ WikiLinker.new.run(input,ARGV.join(' '))
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>545.500000:686.000000</string>
+				<string>545.500000:750.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/English.lproj/main.nib</string>
 			</dict>
